@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <script src ="jquery-3.2.1.js"></script>
+    <title>Exercice 3 P4</title>
+  </head>
+  <body>
+<form id="mainForm">
+  <label for="nom">Nom :</label><input type="text" name="nom" id="nom" /><br />
+  <label for="prenom">Prénom :</label><input type="text" name="prenom" id="prenom" /><br />
+  <label for="mail">Adresse mail :</label><input type="text" name="mail" id="mail" /><br />
+  <label for="tel">Numéro de téléphone :</label><input type="text" name="tel" id="tel" /><br />
+  <button type="button" name="button" id="validation">Valider le formulaire.</button>
+</form>
+  </body>
+  <script>
+$('#validation').click(function(){
+  //Déclaration des variables + récupération de la valeur des id
+  var nom = $('#nom').val();
+  var prenom = $('#prenom').val();
+  var mail = $('#mail').val();
+  var tel = $('#tel').val();
+  //Déclaration de plusieurs type de regex
+  //Regex pour le texte classique
+  var regexText = /^[A-Za-z\-àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœç]+$/;
+  //Regex pour l'adresse mail
+  var regexMail = /^[A-Za-z0-9._]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  //Regex pour le téléphone
+  var regexTel = /^(\+33|0)[1-9](\d\d){4}$/;
+  //Condition pour tester les regex sur chaque variables
+  if (regexText.test(nom) && regexText.test(prenom) && regexMail.test(mail) && regexTel.test(tel)) {
+    //Message disant que le formulaire est correct
+    alert('Le formulaire est correct !');
+  }
+  else {
+    //Message d'erreur si le formulaire n'est pas bon
+    alert('Le formulaire n\'est pas correct, veuillez saisir des caractères valides.');
+  }
+});
+  </script>
+</html>
